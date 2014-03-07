@@ -10,11 +10,28 @@ Usage
 
 Copy `uaparser` folder to your CLASS_PATH.
 
-`@USE
+```
+@USE
 uaparser/uaparser.p
 
 @main[]
-$r[^UAParser:parse[$env:HTTP_USER_AGENT]]
+$r[^UAParser:parse[Mozilla/5.0 (iPhone^; CPU iPhone OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B206 Safari/7534.48.3]]
+
 $r.ua.family
-# -> "Mobile Safari"`
+# -> "Mobile Safari"
+$r.ua.major
+# -> "5"
+$r.ua.minor
+# -> "1"
+
+$r.os.family
+# -> "iOS"
+$r.os.major
+# -> "5"
+$r.os.minor
+# -> "1"
+
+$r.device.family
+# -> "iPhone"
+```
 
