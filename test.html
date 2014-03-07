@@ -1,0 +1,40 @@
+@USE
+uaparser/uaparser.p
+
+@main[]
+<!doctype html>
+<title>Testing UAParser.p</title>
+
+$str[Opera/9.80 (Android 4.0.4^; Linux^; Opera Mobi/ADY-1305080823) Presto/2.11.355 Version/12.10]
+$data[^UAParser:parse[$str]]
+<h2>Testing ^^parse[]</h2>
+<p>$str</p>
+<ul>
+	<li>Browser: $data.ua.family $data.ua.major^if(def $data.ua.minor){.$data.ua.minor}^if(def $data.ua.patch){.$data.ua.patch}<br>
+	<li>OS: $data.os.family $data.os.major^if(def $data.os.minor){.$data.os.minor}^if(def $data.os.patch){.$data.os.patch}^if(def $data.os.patchMinor){.$data.os.patchMinor}<br>
+	<li>Device: $data.device.family<br>
+</ul>
+
+$str[Mozilla/5.0 (Windows NT 6.3^; WOW64^; Trident/7.0^; rv:11.0) like Gecko]
+$data[^UAParser:parseUA[$str]]
+<h2>Testing ^^parseUA[]</h2>
+<p>$str</p>
+<ul>
+	<li>Browser: $data.family $data.major^if(def $data.minor){.$data.minor}^if(def $data.patch){.$data.patch}
+</ul>
+
+$str[Mozilla/5.0 (compatible^; MSIE 10.0^; Windows NT 6.2^; ARM^; Trident/6.0^; Touch^; WebView/1.0)]
+$data[^UAParser:parseOS[$str]]
+<h2>Testing ^^parseOS[]</h2>
+<p>$str</p>
+<ul>
+	<li>OS: $data.family $data.major^if(def $data.minor){.$data.minor}^if(def $data.patch){.$data.patch}^if(def $data.patchMinor){.$data.patchMinor}<br>
+</ul>
+
+$str[Mozilla/5.0 (iPad^; CPU OS 7_0_6 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/11B651]
+$data[^UAParser:parseDevice[$str]]
+<h2>Testing ^^parseDevice[]</h2>
+<p>$str</p>
+<ul>
+	<li>Device: $data.family
+</ul>
