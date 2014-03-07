@@ -5,7 +5,6 @@ UAParser
 static
 
 @auto[filespec]
-#^throw[filespec;^filespec.match[(.+\/)(\.\./(.+\/))(.+)^$][g]{/$match.2}]
 $regexesFile[^file::load[text;^filespec.match[(.+\/)(\.\./(.+\/))(.+)^$][g]{/$match.2}regexes.json]]
 $regexesJSON[^untaint{$regexesFile.text}]
 $regexes[^json:parse[$regexesJSON]]
